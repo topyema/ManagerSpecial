@@ -14,4 +14,4 @@ Usage:
 2. Run the code with simulator
 
 License:
-This code is Public domain for people to read, execute and test freely
+MIT, for people to read, execute and test freely
