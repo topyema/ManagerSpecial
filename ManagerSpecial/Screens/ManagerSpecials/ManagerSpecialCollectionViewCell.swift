@@ -20,6 +20,7 @@ extension ManagerSpecial: ManagerSpecialViewModel {}
 
 protocol ManagerSpecialUIConfigurable {
     func config(with model: ManagerSpecialViewModel, cellSize: CGSize)
+    func configImage(with image: UIImage)
 }
 
 final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpecialUIConfigurable {
@@ -52,16 +53,9 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
         price.text = "$\(model.price)"
         displayName.text = model.displayName
         displayNameWidthConstraint.constant = cellSize.width - Constants.padding * 2
-        
-        DispatchQueue.global().async {
-            if let URL = URL(string: model.imageUrl), let data = try? Data(contentsOf: URL) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-                    }
-                }
-            }
-        }
-        
+    }
+    
+    func configImage(with image: UIImage) {
+        self.imageView.image = image
     }
 }

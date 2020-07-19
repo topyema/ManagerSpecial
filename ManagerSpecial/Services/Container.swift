@@ -16,7 +16,7 @@ protocol ContainerProtocol {
 }
 
 final class Container: ContainerProtocol, ManagerSpecialDependency {
-     
+
     var servicesFactory: [String: FactoryClosure] = [:]
     var services: [String: AnyObject] = [:]
     
@@ -36,7 +36,7 @@ final class Container: ContainerProtocol, ManagerSpecialDependency {
         return resolve(type: ManagerSpecialService.self)!
     }
 
-    var tileLayoutComputer: TileLayoutManager {
-        return resolve(type: TileLayoutManager.self)!
+    var assetDeliveryService: AssetDeliveryService {
+        return resolve(type: AssetDeliveryService.self)!
     }
 }

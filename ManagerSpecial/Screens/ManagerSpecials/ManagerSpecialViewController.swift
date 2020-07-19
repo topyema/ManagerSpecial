@@ -14,6 +14,7 @@ protocol ManagerSpecialViewControllerInput: AnyObject {
 
 protocol ManagerSpecialViewControllerListener: AnyObject {
     func didBecomeActive()
+    func resolveImage(with url: String, complete: @escaping CompleteImageLoadingBlock)
 }
 
 protocol ManagerSpecialViewControllerViewModel: AnyObject {
@@ -100,6 +101,10 @@ extension ManagerSpecialViewController: UICollectionViewDelegate, UICollectionVi
         if let cell = cell as? ManagerSpecialUIConfigurable,
             let size = viewModel?.sizeForIndex(indexPath.row, screenWidth: Int(collectionView.bounds.size.width), padding: Int(Constants.padding), spacing: Int(Constants.minimumInterItemSpacing)) {
             cell.config(with: list[indexPath.row], cellSize: size)
+            listener?.resolveImage(with: list[indexPath.row].imageUrl) { image in
+                guard let image = image else { return }
+                cell.configImage(with: image)
+            }
         }
         return cell
     }
