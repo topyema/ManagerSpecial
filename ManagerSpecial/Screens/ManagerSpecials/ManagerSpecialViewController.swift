@@ -80,7 +80,13 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-
+        
+        // Create a gradient layer.
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor, #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).cgColor]
+        gradientLayer.shouldRasterize = true
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
 
@@ -91,8 +97,9 @@ extension ManagerSpecialViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ManagerSpecialCollectionViewCell.uniqueIdentifier, for: indexPath)
-        if let cell = cell as? ManagerSpecialUIConfigurable {
-            cell.config(with: list[indexPath.row])
+        if let cell = cell as? ManagerSpecialUIConfigurable,
+            let size = viewModel?.sizeForIndex(indexPath.row, screenWidth: Int(collectionView.bounds.size.width), padding: Int(Constants.padding), spacing: Int(Constants.minimumInterItemSpacing)) {
+            cell.config(with: list[indexPath.row], size: size)
         }
         return cell
     }

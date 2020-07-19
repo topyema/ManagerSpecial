@@ -19,7 +19,7 @@ protocol ManagerSpecialViewModel {
 extension ManagerSpecial: ManagerSpecialViewModel {}
 
 protocol ManagerSpecialUIConfigurable {
-    func config(with model: ManagerSpecialViewModel)
+    func config(with model: ManagerSpecialViewModel, size: CGSize)
 }
 
 final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpecialUIConfigurable {
@@ -33,6 +33,7 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var displayName: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var displayNameWidthConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,12 +44,13 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
         layer.cornerRadius = Constants.cornerRadius
     }
     
-    func config(with model: ManagerSpecialViewModel) {
+    func config(with model: ManagerSpecialViewModel, size: CGSize) {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "$\(model.originalPrice)")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         originalPrice.attributedText = attributeString
         price.text = "$\(model.price)"
         displayName.text = model.displayName
+        displayNameWidthConstraint.constant = size.width - 40
         
         DispatchQueue.global().async {
             if let URL = URL(string: model.imageUrl), let data = try? Data(contentsOf: URL) {
