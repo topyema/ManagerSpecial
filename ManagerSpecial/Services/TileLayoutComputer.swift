@@ -79,7 +79,7 @@ final class TileLayoutComputerImpl: TileLayoutComputer {
         let pixelPerUnit = screenWidth / canvasUnit
         let itemCount = countForIndex(index)
         let weightAndTotal = weightForIndex(index)
-        let width = (screenWidth - padding * 2 + (itemCount - 1) * spacing) * weightAndTotal.weight / weightAndTotal.total
+        let width = (screenWidth - (padding * 2 + (itemCount - 1) * spacing)) * weightAndTotal.weight / weightAndTotal.total
         let height = pixelPerUnit * list[index].heightInUnit
         return CGSize(width: CGFloat(width), height: CGFloat(height))
     }

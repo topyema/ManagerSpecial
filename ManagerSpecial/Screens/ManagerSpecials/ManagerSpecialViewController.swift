@@ -103,7 +103,7 @@ extension ManagerSpecialViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        guard let size = viewModel?.sizeForIndex(indexPath.row, screenWidth: Int(collectionView.bounds.size.width), padding: Int(Constants.padding), spacing: Int(Constants.minimumLineSpacing)) else {
+        guard let size = viewModel?.sizeForIndex(indexPath.row, screenWidth: Int(collectionView.bounds.size.width), padding: Int(Constants.padding), spacing: Int(Constants.minimumInterItemSpacing)) else {
             return CGSize.zero
         }
         return size
