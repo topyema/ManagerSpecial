@@ -99,7 +99,7 @@ extension ManagerSpecialViewController: UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ManagerSpecialCollectionViewCell.uniqueIdentifier, for: indexPath)
         if let cell = cell as? ManagerSpecialUIConfigurable,
             let size = viewModel?.sizeForIndex(indexPath.row, screenWidth: Int(collectionView.bounds.size.width), padding: Int(Constants.padding), spacing: Int(Constants.minimumInterItemSpacing)) {
-            cell.config(with: list[indexPath.row], size: size)
+            cell.config(with: list[indexPath.row], cellSize: size)
         }
         return cell
     }

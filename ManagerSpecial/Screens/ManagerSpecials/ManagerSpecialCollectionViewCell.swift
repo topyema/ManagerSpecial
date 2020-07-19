@@ -19,7 +19,7 @@ protocol ManagerSpecialViewModel {
 extension ManagerSpecial: ManagerSpecialViewModel {}
 
 protocol ManagerSpecialUIConfigurable {
-    func config(with model: ManagerSpecialViewModel, size: CGSize)
+    func config(with model: ManagerSpecialViewModel, cellSize: CGSize)
 }
 
 final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpecialUIConfigurable {
@@ -27,6 +27,7 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
 
     enum Constants {
         static let cornerRadius: CGFloat = 10.0
+        static let padding: CGFloat = 20.0
     }
     
     @IBOutlet weak var originalPrice: UILabel!
@@ -44,13 +45,13 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
         layer.cornerRadius = Constants.cornerRadius
     }
     
-    func config(with model: ManagerSpecialViewModel, size: CGSize) {
+    func config(with model: ManagerSpecialViewModel, cellSize: CGSize) {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "$\(model.originalPrice)")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         originalPrice.attributedText = attributeString
         price.text = "$\(model.price)"
         displayName.text = model.displayName
-        displayNameWidthConstraint.constant = size.width - 40
+        displayNameWidthConstraint.constant = cellSize.width - Constants.padding * 2
         
         DispatchQueue.global().async {
             if let URL = URL(string: model.imageUrl), let data = try? Data(contentsOf: URL) {
