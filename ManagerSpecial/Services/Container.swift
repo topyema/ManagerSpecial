@@ -36,7 +36,7 @@ final class Container: ContainerProtocol, ManagerSpecialDependency {
         return resolve(type: ManagerSpecialService.self)!
     }
 
-    var tileLayoutComputer: TileLayoutComputer {
-        return resolve(type: TileLayoutComputer.self)!
+    var tileLayoutComputer: TileLayoutManager {
+        return resolve(type: TileLayoutManager.self)!
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TileLayoutComputer.swift
+//  TileLayoutManager.swift
 //  ManagerSpecial
 //
 //  Created by Ye Ma on 7/17/20.
@@ -18,13 +18,13 @@ typealias WeightAndTotal = (weight: Int, total: Int)
 
 extension ManagerSpecial: FlexibleSize {}
 
-protocol TileLayoutComputer: ManagerSpecialViewControllerViewModel {
+protocol TileLayoutManager: ManagerSpecialViewControllerViewModel {
     var canvasUnit: Int { get }
     func update(_ list: [FlexibleSize], canvasUnit: Int)
     func sizeForIndex(_ index: Int, screenWidth: Int, padding: Int, spacing: Int) -> CGSize
 }
 
-final class TileLayoutComputerImpl: TileLayoutComputer {
+final class TileLayoutManagerImpl: TileLayoutManager {
     
     private var list: [FlexibleSize] = []
     private var rowByIndex: [Int] = []

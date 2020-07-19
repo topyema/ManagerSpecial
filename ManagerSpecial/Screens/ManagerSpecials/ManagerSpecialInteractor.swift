@@ -10,13 +10,13 @@ import Foundation
 
 final class ManagerSpecialInteractor: ManagerSpecialViewControllerListener {
     
-    private let tileLayoutComputer: TileLayoutComputer
+    private let tileLayoutComputer: TileLayoutManager
     private let service: ManagerSpecialService
 
     var router: ManagerSpecialRouting?    
     weak var view: ManagerSpecialViewControllerInput?
     
-    init(tileLayoutComputer: TileLayoutComputer,
+    init(tileLayoutComputer: TileLayoutManager,
          service: ManagerSpecialService) {
         self.service = service
         self.tileLayoutComputer = tileLayoutComputer

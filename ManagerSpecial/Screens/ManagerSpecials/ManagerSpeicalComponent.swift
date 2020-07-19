@@ -10,7 +10,7 @@ import Foundation
 
 protocol ManagerSpecialDependency: AnyObject {
     var service: ManagerSpecialService { get }
-    var tileLayoutComputer: TileLayoutComputer { get }
+    var tileLayoutComputer: TileLayoutManager { get }
 }
 
 final class ManagerSpecialComponent: ManagerSpecialDependency {
@@ -24,7 +24,7 @@ final class ManagerSpecialComponent: ManagerSpecialDependency {
         return dependency.service
     }
     
-    var tileLayoutComputer: TileLayoutComputer {
-        return TileLayoutComputerImpl()
+    var tileLayoutComputer: TileLayoutManager {
+        return TileLayoutManagerImpl()
     }
 }

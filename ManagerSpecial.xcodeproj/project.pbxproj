@@ -18,7 +18,7 @@
 		A8DD380B24C285B3003BC3EA /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD380A24C285B3003BC3EA /* Container.swift */; };
 		A8DD380D24C28601003BC3EA /* ManagerSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD380C24C28601003BC3EA /* ManagerSpecial.swift */; };
 		A8DD380F24C2895B003BC3EA /* ManagerSpecialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD380E24C2895B003BC3EA /* ManagerSpecialCollectionViewCell.swift */; };
-		A8DD381124C2A9D9003BC3EA /* TileLayoutComputer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD381024C2A9D9003BC3EA /* TileLayoutComputer.swift */; };
+		A8DD381124C2A9D9003BC3EA /* TileLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD381024C2A9D9003BC3EA /* TileLayoutManager.swift */; };
 		A8DD381524C34E14003BC3EA /* ManagerSpecialInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD381424C34E14003BC3EA /* ManagerSpecialInteractor.swift */; };
 		A8DD381724C34E31003BC3EA /* ManagerSpecialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD381624C34E31003BC3EA /* ManagerSpecialRouter.swift */; };
 		A8DD381924C34E3C003BC3EA /* ManagerSpeicalBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD381824C34E3C003BC3EA /* ManagerSpeicalBuilder.swift */; };
@@ -51,7 +51,7 @@
 		A8DD380A24C285B3003BC3EA /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		A8DD380C24C28601003BC3EA /* ManagerSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSpecial.swift; sourceTree = "<group>"; };
 		A8DD380E24C2895B003BC3EA /* ManagerSpecialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSpecialCollectionViewCell.swift; sourceTree = "<group>"; };
-		A8DD381024C2A9D9003BC3EA /* TileLayoutComputer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileLayoutComputer.swift; sourceTree = "<group>"; };
+		A8DD381024C2A9D9003BC3EA /* TileLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileLayoutManager.swift; sourceTree = "<group>"; };
 		A8DD381424C34E14003BC3EA /* ManagerSpecialInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSpecialInteractor.swift; sourceTree = "<group>"; };
 		A8DD381624C34E31003BC3EA /* ManagerSpecialRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSpecialRouter.swift; sourceTree = "<group>"; };
 		A8DD381824C34E3C003BC3EA /* ManagerSpeicalBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSpeicalBuilder.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			children = (
 				A8DD380724C276DF003BC3EA /* ManagerSpecialService.swift */,
 				A8DD380A24C285B3003BC3EA /* Container.swift */,
-				A8DD381024C2A9D9003BC3EA /* TileLayoutComputer.swift */,
+				A8DD381024C2A9D9003BC3EA /* TileLayoutManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 				A8DD381924C34E3C003BC3EA /* ManagerSpeicalBuilder.swift in Sources */,
 				A8DD380B24C285B3003BC3EA /* Container.swift in Sources */,
 				A8DD380824C276DF003BC3EA /* ManagerSpecialService.swift in Sources */,
-				A8DD381124C2A9D9003BC3EA /* TileLayoutComputer.swift in Sources */,
+				A8DD381124C2A9D9003BC3EA /* TileLayoutManager.swift in Sources */,
 				A8DD381D24C34FA5003BC3EA /* ManagerSpeicalComponent.swift in Sources */,
 				A8DD37E524C27699003BC3EA /* SceneDelegate.swift in Sources */,
 				A8DD381724C34E31003BC3EA /* ManagerSpecialRouter.swift in Sources */,
