@@ -36,9 +36,25 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
         static let padding: CGFloat = 10
     }
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var failureLabel: UILabel!
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
+    private let failureLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     private var viewModel: ManagerSpecialViewControllerViewModel?
     private var list: [ManagerSpecialViewModel] = []
@@ -50,6 +66,7 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
 
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(ManagerSpecialCollectionViewCell.self, forCellWithReuseIdentifier: ManagerSpecialCollectionViewCell.uniqueIdentifier)
         configView()
 
         listener?.didBecomeActive()
@@ -94,6 +111,21 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
         layer.shouldRasterize = true
         self.gradientLayer = layer
         view.layer.insertSublayer(layer, at: 0)
+        
+        view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
+        view.addSubview(failureLabel)
+        
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            failureLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            failureLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 
