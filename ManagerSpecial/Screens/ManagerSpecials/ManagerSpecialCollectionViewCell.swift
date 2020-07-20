@@ -28,22 +28,76 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
 
     enum Constants {
         static let cornerRadius: CGFloat = 10.0
-        static let padding: CGFloat = 20.0
+        static let displayNamePadding: CGFloat = 20.0
+        static let padding: CGFloat = 10.0
+        static let imageSize: CGFloat = 80.0
     }
     
-    @IBOutlet weak var originalPrice: UILabel!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var displayName: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var displayNameWidthConstraint: NSLayoutConstraint!
+    private var displayNameWidthConstraint: NSLayoutConstraint?
     
+    private let originalPrice: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let price: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGreen
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private let displayName: UILabel = {
+        let label = UILabel()
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let imageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configView()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configView() {
+        backgroundColor = .white
+        clipsToBounds = true
         layer.cornerRadius = Constants.cornerRadius
+
+        addSubview(originalPrice)
+        addSubview(price)
+        addSubview(displayName)
+        addSubview(imageView)
+
+        NSLayoutConstraint.activate([
+            originalPrice.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.padding),
+            originalPrice.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.padding),
+            price.topAnchor.constraint(equalTo: originalPrice.bottomAnchor, constant: Constants.padding),
+            price.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.padding),
+            displayName.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
+            displayName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.padding),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.padding),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.padding),
+            imageView.widthAnchor.constraint(equalToConstant: Constants.imageSize),
+            imageView.heightAnchor.constraint(equalToConstant: Constants.imageSize)
+        ])
+        
+        displayNameWidthConstraint = displayName.widthAnchor.constraint(equalToConstant: 0)
+        displayNameWidthConstraint?.isActive = false
     }
     
     func config(with model: ManagerSpecialViewModel, cellSize: CGSize) {
@@ -52,7 +106,8 @@ final class ManagerSpecialCollectionViewCell: UICollectionViewCell, ManagerSpeci
         originalPrice.attributedText = attributeString
         price.text = "$\(model.price)"
         displayName.text = model.displayName
-        displayNameWidthConstraint.constant = cellSize.width - Constants.padding * 2
+        displayNameWidthConstraint?.constant = cellSize.width - Constants.displayNamePadding * 2
+        displayNameWidthConstraint?.isActive = true
     }
     
     func configImage(with image: UIImage) {
