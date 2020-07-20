@@ -43,6 +43,7 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
     private var viewModel: ManagerSpecialViewControllerViewModel?
     private var list: [ManagerSpecialViewModel] = []
     var listener: ManagerSpecialViewControllerListener?
+    private var gradientLayer: CAGradientLayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,11 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
         configView()
 
         listener?.didBecomeActive()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        gradientLayer?.frame = self.view.bounds
     }
     
     func updateView(status: ManagerSpecialViewControllerViewStatus) {
@@ -83,11 +89,11 @@ final class ManagerSpecialViewController: UIViewController, ManagerSpecialViewCo
         self.navigationController?.view.backgroundColor = .clear
         
         // Create a gradient layer.
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor, #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).cgColor]
-        gradientLayer.shouldRasterize = true
-        view.layer.insertSublayer(gradientLayer, at: 0)
+        let layer = CAGradientLayer()
+        layer.colors = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor, #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).cgColor]
+        layer.shouldRasterize = true
+        self.gradientLayer = layer
+        view.layer.insertSublayer(layer, at: 0)
     }
 }
 
