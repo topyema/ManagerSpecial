@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8AD7D5624C5031900474FA6 /* AsssetDeliveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7D5524C5031900474FA6 /* AsssetDeliveryService.swift */; };
+		A8AD7D5824C5088700474FA6 /* AssetPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AD7D5724C5088700474FA6 /* AssetPersistenceService.swift */; };
 		A8DD37E324C27699003BC3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD37E224C27699003BC3EA /* AppDelegate.swift */; };
 		A8DD37E524C27699003BC3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD37E424C27699003BC3EA /* SceneDelegate.swift */; };
 		A8DD37E724C27699003BC3EA /* ManagerSpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DD37E624C27699003BC3EA /* ManagerSpecialViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A8AD7D5524C5031900474FA6 /* AsssetDeliveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsssetDeliveryService.swift; sourceTree = "<group>"; };
+		A8AD7D5724C5088700474FA6 /* AssetPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPersistenceService.swift; sourceTree = "<group>"; };
 		A8DD37DF24C27699003BC3EA /* ManagerSpecial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManagerSpecial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DD37E224C27699003BC3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8DD37E424C27699003BC3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,9 +134,11 @@
 		A8DD380624C276BD003BC3EA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A8DD380724C276DF003BC3EA /* ManagerSpecialService.swift */,
 				A8DD380A24C285B3003BC3EA /* Container.swift */,
+				A8DD380724C276DF003BC3EA /* ManagerSpecialService.swift */,
 				A8DD381024C2A9D9003BC3EA /* TileLayoutManager.swift */,
+				A8AD7D5524C5031900474FA6 /* AsssetDeliveryService.swift */,
+				A8AD7D5724C5088700474FA6 /* AssetPersistenceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -260,8 +266,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8DD37E724C27699003BC3EA /* ManagerSpecialViewController.swift in Sources */,
+				A8AD7D5624C5031900474FA6 /* AsssetDeliveryService.swift in Sources */,
 				A8DD380F24C2895B003BC3EA /* ManagerSpecialCollectionViewCell.swift in Sources */,
 				A8DD380D24C28601003BC3EA /* ManagerSpecial.swift in Sources */,
+				A8AD7D5824C5088700474FA6 /* AssetPersistenceService.swift in Sources */,
 				A8DD37E324C27699003BC3EA /* AppDelegate.swift in Sources */,
 				A8DD381924C34E3C003BC3EA /* ManagerSpeicalBuilder.swift in Sources */,
 				A8DD380B24C285B3003BC3EA /* Container.swift in Sources */,

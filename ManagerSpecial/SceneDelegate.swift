@@ -20,6 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         container.register(type: ManagerSpecialService.self) { _ in
             return ManagerSpecialServiceImpl()
         }
+        container.register(type: AssetPersistenceService.self) { _ -> AnyObject in
+            return AssetPersistenceServiceInMemoryImpl()
+        }
+        container.register(type: AssetDeliveryService.self) { container -> AnyObject in
+            let persistenService = container.resolve(type: AssetPersistenceService.self)!
+            return AssetDeliveryServiceImpl(persistenceService: persistenService)
+        }
         
         let rootVC = ManagerSpeicalBuilder(dependency: container).build()
         let rootNC = UINavigationController(rootViewController: rootVC)

@@ -19,8 +19,9 @@ final class ManagerSpeicalBuilder {
     func build() -> UIViewController {
         let component = ManagerSpecialComponent(dependency: dependency)
         let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ManagerSpecial") as! ManagerSpecialViewController
-        let interactor = ManagerSpecialInteractor(tileLayoutComputer: component.tileLayoutComputer,
-                                                  service: component.service)
+        let interactor = ManagerSpecialInteractor(tileLayoutManager: component.tileLayoutManager,
+                                                  service: component.service,
+                                                  assetDeliveryService: component.assetDeliveryService)
         let router = ManagerSpecialRouter(view: view)
 
         view.listener = interactor
